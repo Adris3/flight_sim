@@ -40,6 +40,6 @@ def plot(log):
 
 if __name__ == "__main__":
     log = run_sim()
-    save_csv()
+    save_csv(log)
     plot(log)
     print(f"Simulation complete. {len(log)} steps have been logged to telemetry.csv")
