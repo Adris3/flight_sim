@@ -13,4 +13,10 @@ def test_mid_batt_sun_pointing():
     sc.update_mode()
     assert sc.mode == Mode.SUN_POINTING
 
-def 
+def test_eclipse_sun_pointing_high_batt():
+    # Even with a high battery, an eclipse should cause SUN_POINTING mode
+    sc = Spacecraft()
+    sc.battery_lvl = 90
+    sc.in_eclipse = True
+    sc.update_mode()
+    assert sc.mode == Mode.SUN_POINTING
