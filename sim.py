@@ -3,12 +3,14 @@ import matplotlib.pyplot as plt
 from spacecraft import Spacecraft
 
 
-def run_sim(duration=360, dt=1.0):
+def run_sim(duration=360, dt=1.0, inject_fault_at = None):
     sc = Spacecraft()
     log = []
     t = 0.0
 
     while t < duration:
+        if inject_fault_at is not None and abs(t - inject_fault_at) < dt:
+            sc.battery_lvl -= 30 # Simulates a sudden power fault
         log.append(sc.step(t, dt))
         t += dt
     return log
@@ -39,7 +41,7 @@ def plot(log):
     plt.show()
 
 if __name__ == "__main__":
-    log = run_sim()
+    log = run_sim(inject_fault_at=120) # adds fault at t = 120 min mark
     save_csv(log)
     plot(log)
     print(f"Simulation complete. {len(log)} steps have been logged to telemetry.csv")
