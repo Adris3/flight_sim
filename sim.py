@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+import random
 from spacecraft import Spacecraft
 
 
@@ -41,7 +42,8 @@ def plot(log):
     plt.show()
 
 if __name__ == "__main__":
-    log = run_sim(inject_fault_at=120) # adds fault at t = 120 min mark
+    random_num = random.randint(1, 360)
+    log = run_sim(inject_fault_at=random_num) # adds fault at some random mark during the 360 minute cycle
     save_csv(log)
     plot(log)
     print(f"Simulation complete. {len(log)} steps have been logged to telemetry.csv")
