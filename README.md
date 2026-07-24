@@ -17,3 +17,7 @@ Use command:
     pip install -r requirements.txt
     python sim.py
 
+Outputs:
+
+telemetry.csv - logged state and mode at each timestamp
+sim_output.png - batter & mode over time plotted on a line graph, each mode has its own shading
